@@ -1,103 +1,159 @@
-import Image from "next/image";
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import Header from '../components/Header';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-white">
+      {/* Use the reusable Header component */}
+      <Header />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+      <main className="pt-20">
+        {/* Hero Section */}
+        <section id="hero" className="bg-white py-20 md:py-32 relative overflow-hidden">
+          {/* Background grid pattern */}
+          <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+          
+          {/* Main content container */}
+          <div className="container mx-auto px-4 relative z-10">
+            {/* Company badge */}
+            <div className="flex justify-center mb-8">
+              <div className="bg-gray-100 border border-gray-200 text-gray-800 rounded-full px-4 py-1 flex items-center gap-1 text-sm">
+                <span className="text-amber-500">✨</span> Transform your knowledge into revenue <span className="text-amber-500">✨</span>
+              </div>
+            </div>
+            
+            {/* Main headline */}
+            <div className="text-center mb-10">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-center leading-tight">
+                Turn your expertise into 
+                <div className="inline-block bg-blue-500 text-white px-6 py-2 rounded-full my-3">profitable courses</div>
+              </h1>
+            </div>
+            
+            {/* Supporting text */}
+            <div className="max-w-3xl mx-auto text-center mb-12">
+              <p className="text-lg md:text-xl text-gray-600">
+                Done-for-you course creation and digital product services for creators, coaches and B2B SaaS businesses. 
+                Launch your knowledge business without the stress of DIY production.
+              </p>
+            </div>
+            
+            {/* CTA buttons */}
+            <div className="flex flex-col sm:flex-row justify-center gap-5 mb-16">
+              <button className="btn btn-primary btn-lg px-10 text-white">Book a Strategy Call</button>
+              <button className="btn btn-outline btn-lg px-10">See Our Process</button>
+            </div>
+            
+            {/* Social proof */}
+            <div className="mt-20 mb-6 text-center">
+              <p className="text-sm uppercase tracking-wider text-gray-500 font-medium mb-6">Trusted by experts in</p>
+            </div>
+            
+            {/* Expert avatars row */}
+            <div className="grid grid-cols-3 md:grid-cols-7 gap-4 max-w-5xl mx-auto">
+              {[
+                "SaaS", "Coaching", "Marketing", "Finance", 
+                "Education", "Health", "Technology"
+              ].map((expertise, i) => (
+                <div key={i} className="relative flex flex-col items-center">
+                  <div className="aspect-square w-16 h-16 rounded-full bg-gray-200 overflow-hidden border-2 border-white shadow-md">
+                    <div className="w-full h-full bg-gradient-to-br from-blue-100 to-blue-200"></div>
+                  </div>
+                  <div className="text-center mt-2">
+                    <p className="text-xs text-gray-600 font-medium">{expertise}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Chat interface mock - optional addition to the right side */}
+          <div className="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2 w-80 h-96 bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+            <div className="h-12 bg-gray-100 border-b flex items-center px-4">
+              <div className="w-3 h-3 rounded-full bg-red-400 mr-2"></div>
+              <div className="w-3 h-3 rounded-full bg-yellow-400 mr-2"></div>
+              <div className="w-3 h-3 rounded-full bg-green-400 mr-2"></div>
+              <span className="text-sm text-gray-600 font-medium">Course Builder</span>
+            </div>
+            <div className="p-4 h-full bg-white">
+              <div className="flex flex-col gap-3">
+                <div className="bg-gray-100 rounded-lg p-3 max-w-[80%] text-sm">
+                  How can we help you launch your course?
+                </div>
+                <div className="bg-blue-100 rounded-lg p-3 max-w-[80%] self-end text-sm">
+                  I need help creating my first digital product!
+                </div>
+                <div className="bg-gray-100 rounded-lg p-3 max-w-[80%] text-sm">
+                  We can definitely help with that. Our team specializes in course creation...
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Pain Section - Placeholder */}
+        <section id="pain" className="bg-base-200 py-16">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+              If You Don't Act Now...
+            </h2>
+            {/* Pain points will be implemented in the next phase */}
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="card bg-base-100 shadow-xl">
+                <div className="card-body">
+                  <h3 className="card-title">Support Tickets Keep Piling Up</h3>
+                  <p>Placeholder for pain point description</p>
+                </div>
+              </div>
+              <div className="card bg-base-100 shadow-xl">
+                <div className="card-body">
+                  <h3 className="card-title">Customer Onboarding Takes Too Long</h3>
+                  <p>Placeholder for pain point description</p>
+                </div>
+              </div>
+              <div className="card bg-base-100 shadow-xl">
+                <div className="card-body">
+                  <h3 className="card-title">Missed Revenue Opportunities</h3>
+                  <p>Placeholder for pain point description</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Additional sections will be implemented in future phases */}
+
+        {/* Footer - Simple version */}
+        <footer className="bg-neutral text-neutral-content p-10">
+          <div className="container mx-auto">
+            <div className="flex flex-col md:flex-row justify-between">
+              <div>
+                <div className="mb-4">
+                  <Image 
+                    src="/images/logo.png" 
+                    alt="MonetizeUrContent Logo" 
+                    width={160} 
+                    height={35} 
+                    className="h-auto brightness-[2]" 
+                  />
+                </div>
+                <p className="max-w-xs mt-2">
+                  Transform your product knowledge into revenue with our done-for-you content system.
+                </p>
+              </div>
+              <div className="mt-6 md:mt-0">
+                <span className="footer-title">Get Started</span>
+                <button className="btn btn-primary mt-2">Book a Strategy Call</button>
+              </div>
+            </div>
+            <div className="mt-8 border-t border-base-300 pt-6">
+              <p>&copy; {new Date().getFullYear()} MonetizeUrContent. All rights reserved.</p>
+            </div>
+          </div>
+        </footer>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
