@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -6,36 +8,39 @@ const Header = () => {
   return (
     <header className="fixed w-full bg-white shadow-sm z-50">
       <div className="container mx-auto py-4 px-4 flex items-center justify-between">
-        {/* Logo */}
+        {/* Logo - reduced size */}
         <Link href="/" className="flex items-center">
           <Image 
             src="/images/logo.png" 
             alt="MonetizeUrContent Logo" 
-            width={150} 
-            height={32} 
+            width={75}
+            height={16}
             className="h-auto"
           />
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation - using design guidelines */}
         <nav className="hidden md:flex items-center space-x-8">
-          <Link href="/case-studies" className="text-gray-700 hover:text-primary font-medium text-sm">
+          <Link href="/case-studies" className="text-gray-800 hover:text-[#9381FF] font-medium text-sm">
             Case Studies
           </Link>
-          <Link href="/about-us" className="text-gray-700 hover:text-primary font-medium text-sm">
+          <Link href="/about-us" className="text-gray-800 hover:text-[#9381FF] font-medium text-sm">
             About Us
           </Link>
-          <Link href="/resources" className="text-gray-700 hover:text-primary font-medium text-sm">
+          <Link href="/resources" className="text-gray-800 hover:text-[#9381FF] font-medium text-sm">
             Resources
           </Link>
-          <Link href="/blog" className="text-gray-700 hover:text-primary font-medium text-sm">
+          <Link href="/blog" className="text-gray-800 hover:text-[#9381FF] font-medium text-sm">
             Blog
           </Link>
         </nav>
 
-        {/* CTA Button */}
+        {/* CTA Button - using design accent colors */}
         <div className="hidden md:block">
-          <Link href="/book-call" className="btn btn-primary text-white rounded-md text-sm">
+          <Link 
+            href="/book-call" 
+            className="bg-[#9381FF] hover:bg-[#B8B8FF] text-white px-4 py-2 rounded-md text-sm font-medium shadow-sm transition-colors"
+          >
             Book Your Free Call
           </Link>
         </div>
@@ -43,7 +48,7 @@ const Header = () => {
         {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button 
-            className="btn btn-ghost"
+            className="p-2 text-gray-800 hover:text-[#9381FF] transition-colors"
             onClick={() => {
               const drawer = document.getElementById('mobile-menu-drawer');
               if (drawer) {
@@ -68,8 +73,8 @@ const Header = () => {
               <Image 
                 src="/images/logo.png" 
                 alt="MonetizeUrContent Logo" 
-                width={130} 
-                height={28} 
+                width={65}
+                height={14}
                 className="h-auto"
               />
               <label htmlFor="mobile-menu-drawer" className="btn btn-sm btn-ghost">
@@ -79,12 +84,12 @@ const Header = () => {
               </label>
             </div>
             <ul className="space-y-3">
-              <li><Link href="/case-studies" className="block py-2">Case Studies</Link></li>
-              <li><Link href="/about-us" className="block py-2">About Us</Link></li>
-              <li><Link href="/resources" className="block py-2">Resources</Link></li>
-              <li><Link href="/blog" className="block py-2">Blog</Link></li>
+              <li><Link href="/case-studies" className="block py-2 text-gray-800 hover:text-[#9381FF]">Case Studies</Link></li>
+              <li><Link href="/about-us" className="block py-2 text-gray-800 hover:text-[#9381FF]">About Us</Link></li>
+              <li><Link href="/resources" className="block py-2 text-gray-800 hover:text-[#9381FF]">Resources</Link></li>
+              <li><Link href="/blog" className="block py-2 text-gray-800 hover:text-[#9381FF]">Blog</Link></li>
               <li className="pt-6">
-                <Link href="/book-call" className="btn btn-primary w-full text-white">
+                <Link href="/book-call" className="bg-[#9381FF] hover:bg-[#B8B8FF] text-white px-4 py-2 rounded-md text-sm font-medium shadow-sm block text-center transition-colors">
                   Book Your Free Call
                 </Link>
               </li>
